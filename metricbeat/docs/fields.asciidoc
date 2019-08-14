@@ -56,6 +56,7 @@ grouped in the following categories:
 * <<exported-fields-prometheus>>
 * <<exported-fields-rabbitmq>>
 * <<exported-fields-redis>>
+* <<exported-fields-stan>>
 * <<exported-fields-system>>
 * <<exported-fields-traefik>>
 * <<exported-fields-uwsgi>>
@@ -23302,6 +23303,261 @@ Number of keys in the keyspace.
 --
 type: long
 
+
+
+--
+
+[[exported-fields-stan]]
+== Stan fields
+
+stan Module
+
+
+
+[float]
+== stan fields
+
+`stan` contains statistics that were read from Nats Streaming server (STAN)
+
+
+
+*`stan.server.id`*::
++
+--
+type: keyword
+
+The server ID
+
+
+--
+
+*`stan.server.time`*::
++
+--
+type: date
+
+Server time of metric creation
+
+
+--
+
+[float]
+== channels fields
+
+Contains stan / nats streaming/serverz endpoint metrics
+
+
+
+*`stan.channels.name`*::
++
+--
+type: keyword
+
+The name of the STAN streaming channel
+
+
+--
+
+*`stan.channels.msgs`*::
++
+--
+type: long
+
+The number of STAN streaming messages
+
+
+--
+
+*`stan.channels.bytes`*::
++
+--
+type: long
+
+The number of STAN bytes in the channel
+
+
+--
+
+*`stan.channels.first_seq`*::
++
+--
+type: long
+
+First sequence number stored in the channel
+
+
+--
+
+*`stan.channels.last_seq`*::
++
+--
+type: long
+
+Last sequence number stored in the channel
+
+
+--
+
+*`stan.channels.depth`*::
++
+--
+type: long
+
+Queue depth based upon current sequence number and highest reported subscriber sequence number
+
+
+--
+
+[float]
+== stats fields
+
+Contains only high-level stan / nats streaming server related metrics
+
+
+
+*`stan.stats.state`*::
++
+--
+type: keyword
+
+The cluster / streaming configuration state (STANDALONE, CLUSTERED)
+
+
+--
+
+*`stan.stats.role`*::
++
+--
+type: keyword
+
+If clustered, role of this node in the cluster (Leader, Follower, Candidate)
+
+
+--
+
+*`stan.stats.clients`*::
++
+--
+type: integer
+
+The number of STAN clients
+
+
+--
+
+*`stan.stats.subscriptions`*::
++
+--
+type: integer
+
+The number of STAN streaming subscriptions
+
+
+--
+
+*`stan.stats.channels`*::
++
+--
+type: integer
+
+The number of STAN channels
+
+
+--
+
+*`stan.stats.messages`*::
++
+--
+type: long
+
+Number of messages across all STAN queues
+
+
+--
+
+*`stan.stats.bytes`*::
++
+--
+type: long
+
+Number of bytes consumed across all STAN queues
+
+
+--
+
+[float]
+== subscriptions fields
+
+Contains stan / nats streaming/serverz endpoint subscription metrics
+
+
+
+*`stan.subscriptions.id`*::
++
+--
+type: keyword
+
+The name of the STAN channel subscription (client_id)
+
+
+--
+
+*`stan.subscriptions.channel`*::
++
+--
+type: keyword
+
+The name of the STAN channel the subscription is associated with
+
+
+--
+
+*`stan.subscriptions.queue`*::
++
+--
+type: keyword
+
+The name of the NATS queue that the STAN channel subscription is associated with, if any
+
+
+--
+
+*`stan.subscriptions.last_sent`*::
++
+--
+type: long
+
+Last known sequence number of the subscription that was acked
+
+
+--
+
+*`stan.subscriptions.pending`*::
++
+--
+type: long
+
+Number of pending messages from / to the subscriber
+
+
+--
+
+*`stan.subscriptions.offline`*::
++
+--
+type: bool
+
+Is the subscriber marked as offline?
+
+
+--
+
+*`stan.subscriptions.stalled`*::
++
+--
+type: bool
+
+Is the subscriber known to be stalled?
 
 
 --
