@@ -428,8 +428,8 @@ func statsFromInodes(root string, pid int32, tmap []netConnectionKindType, inode
 			}
 
 			// fetch process owner Real, effective, saved set, and filesystem UIDs
-			proc := process{Pid: conn.Pid}
-			conn.Uids, _ = proc.getUids()
+			//proc := process{Pid: conn.Pid}
+			//conn.Uids, _ = proc.getUids()
 
 			ret = append(ret, conn)
 			dupCheckMap[connKey] = struct{}{}
